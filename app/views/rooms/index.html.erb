@@ -3,15 +3,18 @@
     <h1 class="font-bold text-4xl">Room#index</h1>
     <p><%= current_user.email %></p>
   </div>
-  <%=  turbo_stream_from"rooms" %>
+
+  <h1 class="font-bold text-4xl">all Room</h1>
+  <%= turbo_stream_from "rooms" %>
   <div id="rooms">
-    <h1 class="font-bold text-4xl">all Room</h1>
-    <%= render partial:"room", locals: {records: @rooms} %>
+    <%= render @rooms %>
   </div>
 
+  <h1 class="font-bold text-4xl">all users</h1>
   <%= turbo_stream_from "users" %>
-  <div id="users" >
-    <h1 class="font-bold text-4xl">all users</h1>
-   <%= render partial:"room", locals: {records: @users} %>
+  <div id="users">
+    <%= render @users %>
   </div>
+
+  <%= render partial: "layouts/form_room"%>
 </section>

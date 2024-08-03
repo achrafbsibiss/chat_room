@@ -1,13 +1,5 @@
-<% records.each do |record| %>
-  <div id="<%= dom_id(record) %>">
-    <span>
-      <% if record.respond_to?(:name) && record.name.present? %>
-        <%= link_to record.name, room_path(record) %>
-      <% elsif record.respond_to?(:email) && record.email.present? %>
-        <%= link_to record.email, users_path(record)%>
-      <% else %>
-        <em>Unknown</em>
-      <% end %>
-    </span>
-  </div>
-<% end %>
+<div id="<%= dom_id(room)%>">
+  <span class="text-blue-400">
+    <%= room.name %>
+  </span>
+</div>
