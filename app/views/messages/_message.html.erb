@@ -1,7 +1,7 @@
 
-<div class="bg-blue-400 mt-2 p-2 rounded-lg msg-<%= message.user.id %>">
+<div class="bg-blue-400 mt-2 p-2 rounded-lg msg-<%= message.user.id %> flex-col">
   <% unless message.room.is_private %>
     <h6 class="name text-sm font-semibold msg-<%= message.user.id%>"> <%= message.user.email %> </h6>
   <% end %>
-  <p class="text-white"><%= message.content %></p>
+  <p class="text-white msg-<%= message.user.id%>"><%= message.content %></p>
 </div>
