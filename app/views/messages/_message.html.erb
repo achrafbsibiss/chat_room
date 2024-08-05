@@ -1,0 +1,7 @@
+
+<div class="bg-blue-400 mt-2 p-2 rounded-lg msg-<%= message.user.id %>">
+  <% unless message.room.is_private %>
+    <h6 class="name text-sm font-semibold msg-<%= message.user.id%>"> <%= message.user.email %> </h6>
+  <% end %>
+  <p class="text-white"><%= message.content %></p>
+</div>

@@ -1,14 +1,22 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_room, only: %i[edit update destroy]
+  before_action :set_room, only: %i[update destroy show]
 
   def index
     @room = Room.new
     @rooms = Room.public_room
     @users = User.all_except(current_user)
+    render 'index'
   end
 
-  def edit; end
+  def show
+    @current_user = current_user
+    @single_room = @room
+    @message = Message.new
+    @messages = @single_room.messages.order(created_at: :asc)
+    @rooms = Room.public_room
+    @users = User.all_except(current_user)
+    render 'index'
+  end
 
   def create
     @room = Room.create(set_params)
