@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users', to: 'devise/session#new'
   end
-  resources :rooms, expect: %i[edit]
+  resources :rooms, expect: %i[edit] do
+    resources :messages
+  end
   root 'pages#index'
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
