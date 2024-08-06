@@ -1,6 +1,5 @@
-
-  <div id="<%= dom_id(user)%>">
-    <span class="text-green-500">
-    <%= user.email%>
-    </span>
-  </div>
+<div id="<%= dom_id(user)%>">
+  <span class="text-black-500 hover:text-sky-700">
+    <%= link_to user.email, user_path(user) %>
+  </span>
+</div>

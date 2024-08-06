@@ -7,15 +7,6 @@
       <p class="mt-2 text-gray-700">Logged in as: <%= current_user.email %></p>
     </div>
 
-    <!-- Rooms Section -->
-    <div class="bg-white p-6 rounded-lg shadow-md">
-      <h2 class="text-3xl font-semibold text-gray-800">All Rooms</h2>
-      <%= turbo_stream_from "rooms" %>
-      <div id="rooms" class="mt-4 space-y-4">
-        <%= render @rooms %>
-      </div>
-    </div>
-
     <!-- Users Section -->
     <div class="bg-white p-6 rounded-lg shadow-md">
       <h2 class="text-3xl font-semibold text-gray-800">All Users</h2>
@@ -25,8 +16,17 @@
       </div>
     </div>
 
+    <!-- Rooms Section -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-3xl font-semibold text-gray-800">All Rooms</h2>
+      <%= turbo_stream_from "rooms" %>
+      <div id="rooms" class="mt-4 space-y-4">
+        <%= render @rooms %>
+      </div>
+    </div>
+
     <!-- Form Partial -->
-    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+    <div class="">
       <%= render partial: "shared/form_room" %>
     </div>
   </section>
@@ -34,7 +34,7 @@
   <!-- Chat Section -->
   <section class="flex flex-col flex-shrink-0 w-full p-6 rounded-lg shadow-md">
      <% if @single_room %>
-      <h4 class="text-center text-xl font-semibold mb-4"> <%= @single_room.name %> </h4>
+      <h4 class="text-center text-xl font-semibold mb-4"> <%= @user&.email || @single_room.name %> </h4>
       <%= turbo_stream_from @single_room %>
       <div id="messages" class="flex-1 overflow-y-auto mb-4">
         <!-- Render messages here -->

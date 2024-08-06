@@ -1,9 +1,15 @@
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :room
-  after_create_commit { broadcast_append_to self.room}
 
-  after_create_commit do
-    broadcast_append_to "messages_#{self.room_id}", target: "messages_#{self.room_id}", locals: { current_user: self.user }
+  before_create :confirm_participant
+  after_create_commit { broadcast_append_to room }
+
+  def confirm_participant
+    return unless room.is_private
+
+    is_participant = Participant.where(user_id: user.id, room_id: room.id).first
+    Rails.logger.debug "Participant check: #{is_participant}"
+    throw :abort unless is_participant
   end
 end
