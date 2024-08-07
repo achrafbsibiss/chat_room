@@ -36,9 +36,8 @@
      <% if @single_room %>
       <h4 class="text-center text-xl font-semibold mb-4"> <%= @user&.email || @single_room.name %> </h4>
       <%= turbo_stream_from @single_room %>
-      <div id="messages" class="flex-1 overflow-y-auto mb-4">
-        <!-- Render messages here -->
-      <%= render @messages%> 
+      <div id="messages" data-controller="scroll" class="flex-1 overflow-y-auto mb-4">
+        <%= render @messages%> 
       </div>
 
       <%=render partial: "shared/new_message_form"%>
