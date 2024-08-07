@@ -1,4 +1,4 @@
-<%= form_with(model:[@single_room,@message], remote: true, class: "flex items-center" ) do |f| %>
+<%= form_with(model:[@single_room,@message], remote: true, data: { controller: "rest-form", action: "turbo:submit-end->rest-form#reset"},class: "flex items-center" ) do |f| %>
   <%= f.text_area :content, placeholder: "Type your message...", class: "flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" %>
-  <%= f.submit "Send", class: "ml-4 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
+  <%= f.submit "Send",class: "ml-4 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
 <% end %>
