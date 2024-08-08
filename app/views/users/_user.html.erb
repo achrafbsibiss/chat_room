@@ -1,7 +1,8 @@
 <div id="<%= dom_id(user)%>">
   <%= link_to user_path(user) do %>
     <span class="flex text-black-500 hover:text-sky-700">
-      <%= user.online? %>
+      
+      <div class="rounded-full h-5 w-5 <%= connect_user(user.online?)%>"></div>
       <%= image_tag user.avatar_url_of_default, class: "w-6 h-6 mx-3 rounded-full overflow-hidden" %>
       <%= user.email %>
     </span>
