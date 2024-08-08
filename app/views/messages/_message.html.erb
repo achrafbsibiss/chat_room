@@ -1,7 +1,10 @@
 
 <div class="bg-blue-400 w-full mt-2 p-2 rounded-lg msg-<%= message.user.id %> flex-col">
-  <% unless message.room.is_private %>
-    <h6 class="name text-sm font-semibold msg-<%= message.user.id%>"> <%= message.user.email %> </h6>
-  <% end %>
+  <%# unless message.room.is_private %>
+    <span class="name text-sm flex font-semibold msg-<%= message.user.id%>"> 
+    <%= message.user.email %> 
+    <%= image_tag message.user.avatar_url_of_default, class: "w-6 h-6 msg-#{message.user.id}"%>
+    </span>
+  <%# end %>
   <p class="text-white msg-<%= message.user.id%>"><%= message.content %></p>
 </div>

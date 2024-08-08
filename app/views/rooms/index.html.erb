@@ -4,7 +4,9 @@
     <!-- Header Section -->
     <div class="bg-gray-100 p-6 rounded-lg shadow-md">
       <h1 class="text-4xl font-bold text-gray-900">Room#index</h1>
-      <p class="mt-2 text-gray-700">Logged in as:<br> 
+      <p class="mt-2 text-gray-700">Logged in as:<br>
+      <div class="<%= connect_user(current_user.online?) %>">
+      </div>
        <span class= "flex"> <%= image_tag current_user.avatar_url_of_default, class: "w-6 h-6 mx-3 rounded-full overflow-hidden" %> <%= current_user.email %></span>
       </p>
     </div>
