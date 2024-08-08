@@ -69,6 +69,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "image_processing"
 gem "tailwindcss-rails", "~> 2.6"
 
 gem "devise", "~> 4.9"
