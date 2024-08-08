@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :participants, dependent: :destroy
 
+
   scope :all_except, ->(user) { where.not(id: user) }
   after_create_commit { broadcast_append_to 'users' }
 
@@ -21,6 +22,10 @@ class User < ApplicationRecord
     end
   end
 
+  def online?
+    updated_at > 2.minutes.ago
+  end
+  
   def full_name
     "#{user.first_name} #{user.lasr_name}".uprcase
   end
