@@ -11,10 +11,6 @@ class User < ApplicationRecord
   scope :all_except, ->(user) { where.not(id: user) }
   after_create_commit { broadcast_append_to 'users' }
 
-  def chat_avatar
-    avatar.variant(resize_to_limit: [50, 50]).processed
-  end
-
   def avatar_url_of_default
     if avatar.attached?
       Rails.application.routes.url_helpers.rails_blob_url(
